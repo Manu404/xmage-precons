@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using CommandLine;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,6 @@ namespace PreconDeckListBuilder
         public DeckSet Set { get; set; }
         public DeckType Type { get; set; }
         public string Id { get; set; }
-        public int CardCount { get; set; }
         public string Url { get; set; }
 
         public List<Card> Cards { get; set; }
@@ -59,33 +59,60 @@ namespace PreconDeckListBuilder
         }
     }
 
+    class Options
+    {
+        [Option("Clean", Required = false, HelpText = "Delete temp and deck directory and files.")]
+        public bool Clean { get; set; }
+
+        [Option("Debug", Required = false, HelpText = "Output debug info in the console.")]
+        public bool Debug { get; set; }
+
+        [Option("OutDir", Required = false, HelpText = "Output dir.", Default = "./decks")]
+        public string OutDir { get; set; }
+
+        [Option("TempDir", Required = false, HelpText = "Temp dir.", Default = "./temp")]
+        public string TempDir { get; set; }
+
+        [Option("Url", Required = false, HelpText = "Source url (default: https://mtg.wtf/deck).", Default = "https://mtg.wtf/deck")]
+        public string Url { get; set; }
+
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            (new ListBuilder()).Run();
+            Parser.Default.ParseArguments<Options>(args).WithParsed(o => (new ListBuilder(o)).Run());
         }
     }
 
     class ListBuilder
     {
         readonly Repository repository = new Repository();
-        readonly string tempDir = "./temp";
-        readonly string outputDir = "./decks";
-        bool debug = false;
-        bool clean = false;
+        readonly Options _options;
+        string TempDir => _options.TempDir;
+        string OutputDir => _options.OutDir;
+        string Url => _options.Url;
+        bool IsDebug => _options.Debug;
+        bool Clean => _options.Clean;
+
+        public ListBuilder(Options options)
+        {
+            _options = options;
+        }
 
         public void Run()
         {
-            BuildDataStoreFromHomePage(!debug ? "http://localhost/mtg/home.html" : "https://mtg.wtf/");
+            BuildDataStoreFromHomePage();
             BuildLocalCopy();
             BuildDeckLists();
         }
 
-        void BuildDataStoreFromHomePage(string url)
+        void BuildDataStoreFromHomePage()
         {
+            BuildAndCleanDir(TempDir);
             var contentInParenthesis = @"(?<=\().+?(?=\))";
-            var doc = new HtmlWeb().Load(url);
+            var doc = new HtmlWeb().Load(Url);
 
             Console.WriteLine($"Parsing index.");
 
@@ -114,7 +141,7 @@ namespace PreconDeckListBuilder
                         Id = System.Net.WebUtility.HtmlDecode(list.InnerHtml.Trim()),
                         Set = set,
                         Type = type,
-                        Url = list.GetAttributeValue("href", "")
+                        Url = "https://" + new System.Uri(Url).Host + list.GetAttributeValue("href", "")
                     });
                 }
             }
@@ -122,7 +149,6 @@ namespace PreconDeckListBuilder
 
         void BuildLocalCopy()
         {
-            BuildAndCleanDir(tempDir);
             Console.WriteLine($"{repository.DeckListEntries.GetAll().Count()} decks listed, create local copy.");
             foreach (var decklist in repository.DeckListEntries.GetAll())
             {
@@ -137,7 +163,7 @@ namespace PreconDeckListBuilder
 
         void BuildDeckLists()
         {
-            BuildAndCleanDir(outputDir);
+            BuildAndCleanDir(OutputDir);
             Console.WriteLine($"\nBuilding decks.");
             foreach (var decklist in repository.DeckListEntries.GetAll())
             {
@@ -157,7 +183,7 @@ namespace PreconDeckListBuilder
                     var set = url[2];
                     var id = url[3];
 
-                    if(debug) Console.WriteLine($"{quantity}x {name} ({set}:{id})");
+                    if(IsDebug) Console.WriteLine($"{quantity}x {name} ({set}:{id})");
 
                     decklist.Cards.Add(new Card()
                     {
@@ -186,21 +212,20 @@ namespace PreconDeckListBuilder
 
         string GetTempPath(DeckListEntry entry)
         {
-            return Path.Combine(tempDir, string.Concat(entry.Url.Split(Path.GetInvalidFileNameChars())));
+            return Path.Combine(TempDir, string.Concat(entry.Url.Split(Path.GetInvalidFileNameChars())));
         }
 
         string GetOutputPath(DeckListEntry entry)
         {
-            return Path.Combine(outputDir, string.Concat($"[{entry.Set.Id} - {entry.Type.Id}] {entry.Id}.dck".Split(Path.GetInvalidFileNameChars())));
+            return Path.Combine(OutputDir, string.Concat($"[{entry.Set.Id} - {entry.Type.Id}] {entry.Id}.dck".Split(Path.GetInvalidFileNameChars())));
         }
 
         void BuildAndCleanDir(string dir)
         {
-            if (clean && Directory.Exists(dir))
+            if (Clean && Directory.Exists(dir))
                 Directory.Delete(dir, true);
             Directory.CreateDirectory(dir);
         }
-
     }
 
     class Repository
