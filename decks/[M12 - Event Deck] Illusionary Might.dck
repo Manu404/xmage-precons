@@ -14,10 +14,10 @@
 1 [M12:227] Glacial Fortress
 4 [SOM:227] Glimmerpost
 19 [M12:234] Island
-2 [M12:52] Flashfreeze
-2 [M12:54] Frost Breath
-3 [M12:64] Master Thief
-1 [M12:67] Mind Control
-2 [M12:69] Negate
-4 [MBS:28] Neurok Commando
-1 [SOM:46] Stoic Rebuttal
+SB: 2 [M12:52] Flashfreeze
+SB: 2 [M12:54] Frost Breath
+SB: 3 [M12:64] Master Thief
+SB: 1 [M12:67] Mind Control
+SB: 2 [M12:69] Negate
+SB: 4 [MBS:28] Neurok Commando
+SB: 1 [SOM:46] Stoic Rebuttal

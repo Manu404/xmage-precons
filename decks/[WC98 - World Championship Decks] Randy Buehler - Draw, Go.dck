@@ -15,8 +15,8 @@
 4 [WC98:rb338] Island
 4 [WC98:rb166] Quicksand
 4 [WC98:rb327] Stalking Stones
-2 [WC98:rb55sb] Capsize
-1 [WC98:rb290sb] Grindstone
-4 [WC98:rb72sb] Hydroblast
-4 [WC98:rb38sb] Sea Sprite
-4 [WC98:rb330sb] Wasteland
+SB: 2 [WC98:rb55sb] Capsize
+SB: 1 [WC98:rb290sb] Grindstone
+SB: 4 [WC98:rb72sb] Hydroblast
+SB: 4 [WC98:rb38sb] Sea Sprite
+SB: 4 [WC98:rb330sb] Wasteland

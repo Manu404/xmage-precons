@@ -25,10 +25,10 @@
 1 [WC01:ar345] Sulfurous Springs
 4 [WC01:ar350] Underground River
 3 [WC01:ar330] Urborg Volcano
-2 [WC01:ar131sb] Duress
-2 [WC01:ar133sb] Engineered Plague
-2 [WC01:ar255sb] Lobotomy
-3 [WC01:ar307sb] Meekstone
-2 [WC01:ar209sb] Pyroclasm
-1 [WC01:ar78sb] Teferi's Response
-3 [WC01:ar128sb] Tsabo's Assassin
+SB: 2 [WC01:ar131sb] Duress
+SB: 2 [WC01:ar133sb] Engineered Plague
+SB: 2 [WC01:ar255sb] Lobotomy
+SB: 3 [WC01:ar307sb] Meekstone
+SB: 2 [WC01:ar209sb] Pyroclasm
+SB: 1 [WC01:ar78sb] Teferi's Response
+SB: 3 [WC01:ar128sb] Tsabo's Assassin

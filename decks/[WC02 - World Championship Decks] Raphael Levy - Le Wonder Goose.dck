@@ -27,9 +27,9 @@
 1 [WC02:rl337a] Island
 1 [WC02:rl338] Island
 4 [WC02:rl143] Yavimaya Coast
-4 [WC02:rl235sb] Compost
-3 [WC02:rl51sb] Disrupt
-3 [WC02:rl127sb] Phantom Centaur
-2 [WC02:rl20sb] Ray of Revelation
-2 [WC02:rl70sb] Repulse
-1 [WC02:rl30sb] Rushing River
+SB: 4 [WC02:rl235sb] Compost
+SB: 3 [WC02:rl51sb] Disrupt
+SB: 3 [WC02:rl127sb] Phantom Centaur
+SB: 2 [WC02:rl20sb] Ray of Revelation
+SB: 2 [WC02:rl70sb] Repulse
+SB: 1 [WC02:rl30sb] Rushing River

@@ -46,7 +46,7 @@ namespace PreconDeckListBuilder
         public string SetId { get; set; }
         public string Name { get; set; }
         public string Quantity { get; set; }
-        public bool InSideboard { get; set; }
+        public bool IsSideboard { get; set; }
 
         public string GetXmageReference()
         {
@@ -55,7 +55,7 @@ namespace PreconDeckListBuilder
 
         private string GetSideboardPrefix()
         {
-            return InSideboard ? "SB: " : "";
+            return IsSideboard ? "SB: " : "";
         }
     }
 
@@ -141,7 +141,7 @@ namespace PreconDeckListBuilder
                         Id = System.Net.WebUtility.HtmlDecode(list.InnerHtml.Trim()),
                         Set = set,
                         Type = type,
-                        Url = "https://" + new System.Uri(Url).Host + list.GetAttributeValue("href", "")
+                        Url = "https://" + new Uri(Url).Host + list.GetAttributeValue("href", "")
                     });
                 }
             }
@@ -183,7 +183,9 @@ namespace PreconDeckListBuilder
                     var set = url[2];
                     var id = url[3];
 
-                    if(IsDebug) Console.WriteLine($"{quantity}x {name} ({set}:{id})");
+                    isSideboard = isSideboard || (card.ParentNode.GetAttributeValue("class", "") == "card_group" && card.ParentNode.InnerText.Contains("Sideboard"));
+
+                    if (IsDebug) Console.WriteLine($"{quantity}x {name} ({set}:{id})");
 
                     decklist.Cards.Add(new Card()
                     {
@@ -192,8 +194,9 @@ namespace PreconDeckListBuilder
                         Id = System.Net.WebUtility.HtmlDecode(name),
                         Name = System.Net.WebUtility.HtmlDecode(name),
                         Quantity = quantity.ToString(),
-                        InSideboard = isSideboard
+                        IsSideboard = isSideboard
                     });
+
                     isSideboard = false;
                 }                
                 SaveDeckList(decklist);

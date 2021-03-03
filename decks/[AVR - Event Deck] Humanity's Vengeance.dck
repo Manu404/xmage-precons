@@ -17,9 +17,9 @@
 9 [AVR:233] Island
 1 [ISD:244] Moorland Haunt
 12 [AVR:230] Plains
-3 [AVR:11] Cathedral Sanctifier
-2 [AVR:12] Cloudshift
-2 [NPH:12] Inquisitor Exarch
-4 [M12:63] Mana Leak
-3 [M12:69] Negate
-1 [M12:28] Pacifism
+SB: 3 [AVR:11] Cathedral Sanctifier
+SB: 2 [AVR:12] Cloudshift
+SB: 2 [NPH:12] Inquisitor Exarch
+SB: 4 [M12:63] Mana Leak
+SB: 3 [M12:69] Negate
+SB: 1 [M12:28] Pacifism

@@ -14,10 +14,10 @@
 5 [WC99:mlp346a] Mountain
 5 [WC99:mlp346b] Mountain
 4 [WC99:mlp330] Wasteland
-1 [WC99:mlp174sb] Arc Lightning
-1 [WC99:mlp173sb] Fireslinger
-1 [WC99:mlp83sb] Flowstone Flood
-2 [WC99:mlp134sb] Masticore
-4 [WC99:mlp211sb] Scald
-2 [WC99:mlp102sb] Shattering Pulse
-4 [WC99:mlp140sb] Thran Foundry
+SB: 1 [WC99:mlp174sb] Arc Lightning
+SB: 1 [WC99:mlp173sb] Fireslinger
+SB: 1 [WC99:mlp83sb] Flowstone Flood
+SB: 2 [WC99:mlp134sb] Masticore
+SB: 4 [WC99:mlp211sb] Scald
+SB: 2 [WC99:mlp102sb] Shattering Pulse
+SB: 4 [WC99:mlp140sb] Thran Foundry

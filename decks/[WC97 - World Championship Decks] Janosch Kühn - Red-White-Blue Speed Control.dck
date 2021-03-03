@@ -25,10 +25,10 @@
 1 [WC97:jk433] Plains
 4 [WC97:jk144] Thawing Glaciers
 1 [WC97:jk167] Undiscovered Paradise
-2 [WC97:jk17sb] Circle of Protection: Black
-3 [WC97:jk20sb] Circle of Protection: Red
-2 [WC97:jk26sb] Disenchant
-2 [WC97:jk223sb] Earthquake
-1 [WC97:jk139sb] Kjeldoran Outpost
-2 [WC97:jk81sb] Political Trickery
-3 [WC97:jk262sb] Pyroblast
+SB: 2 [WC97:jk17sb] Circle of Protection: Black
+SB: 3 [WC97:jk20sb] Circle of Protection: Red
+SB: 2 [WC97:jk26sb] Disenchant
+SB: 2 [WC97:jk223sb] Earthquake
+SB: 1 [WC97:jk139sb] Kjeldoran Outpost
+SB: 2 [WC97:jk81sb] Political Trickery
+SB: 3 [WC97:jk262sb] Pyroblast

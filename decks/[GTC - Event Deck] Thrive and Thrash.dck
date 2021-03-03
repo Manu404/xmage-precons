@@ -21,8 +21,8 @@
 6 [RTR:255] Island
 1 [RTR:265] Mountain
 4 [GTC:246] Simic Guildgate
-4 [ISD:53] Dissipate
-4 [M13:132] Flames of the Firebrand
-2 [GTC:127] Naturalize
-2 [M13:62] Negate
-3 [M13:185] Rancor
+SB: 4 [ISD:53] Dissipate
+SB: 4 [M13:132] Flames of the Firebrand
+SB: 2 [GTC:127] Naturalize
+SB: 2 [M13:62] Negate
+SB: 3 [M13:185] Rancor
